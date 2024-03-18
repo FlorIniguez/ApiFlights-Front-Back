@@ -7,10 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class FlightsApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(FlightsApiApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(FlightsApiApplication.class, args);
+    }
 
 
 }
+
+

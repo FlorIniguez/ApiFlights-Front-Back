@@ -17,19 +17,20 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String origen;
-    private String destino;
-    private String fechaHoraSalida;
-    private String fechaHoraLLegada;
-    private double precioEnPesos;
-    private String frecuencia;
+    private String origin;
+    private String destiny;
+    private String departureTime;
+    private String arrivingTime;
+    private double price;
+    private String frequency;
 
-    public Flight(String origen, String destino, String fechaHoraSalida, String fechaHoraLLegada, double precioEnPesos, String frecuencia) {
+
+   /* public Flight(String origen, String destino, String fechaHoraSalida, String fechaHoraLLegada, double precioEnPesos, String frecuencia) {
         this.origen = origen;
         this.destino = destino;
         this.fechaHoraSalida = fechaHoraSalida;
         this.fechaHoraLLegada = fechaHoraLLegada;
         this.precioEnPesos = precioEnPesos;
         this.frecuencia = frecuencia;
-    }
+    } */
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/flights")
@@ -19,7 +20,7 @@ public class FlightController {
         return flightService.getAllFlights();
     }
     @GetMapping("/{id}")
-    public Flight findFlightById(@PathVariable Long id) {
+    public Optional <Flight> findFlightById(@PathVariable Long id) {
         return flightService.searchFlightId(id);
     }
     @PostMapping("/add")
@@ -27,13 +28,17 @@ public class FlightController {
         flightService.createFlight(flight);
     }
     @PutMapping("/update")
-    public Flight updateFlight(@RequestBody Flight flight) {
-        return flightService.updateFlight(flight);
+    public Optional<Flight> updateFlight(@RequestBody Flight flight) {
+       return flightService.updateFlight(flight);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteFlight(@PathVariable Long id) {
         flightService.deleteFlight(id);
+    }
+    @GetMapping ("/sale")
+    public List<Flight> saleFlights(@RequestParam double offerPrice){
+        return flightService.saleFlights(offerPrice);
     }
 
 
