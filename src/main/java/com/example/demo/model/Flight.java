@@ -5,32 +5,36 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 
 public class Flight {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String origin;
-    private String destiny;
-    private String departureTime;
-    private String arrivingTime;
-    private double price;
-    private String frequency;
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   private Long id;
+   private String origin;
+   private String destiny;
+   private String departureTime;
+   private String arrivingTime;
+   private double price;
+   private String frequency;
 
 
-   /* public Flight(String origen, String destino, String fechaHoraSalida, String fechaHoraLLegada, double precioEnPesos, String frecuencia) {
-        this.origen = origen;
-        this.destino = destino;
-        this.fechaHoraSalida = fechaHoraSalida;
-        this.fechaHoraLLegada = fechaHoraLLegada;
-        this.precioEnPesos = precioEnPesos;
-        this.frecuencia = frecuencia;
-    } */
+   public Flight(String origin, String destiny, String departureTime, String arrivingTime, double price, String frequency) {
+      this.origin = origin;
+      this.destiny = destiny;
+      this.departureTime = departureTime;
+      this.arrivingTime = arrivingTime;
+      this.price = price;
+      this.frequency = frequency;
+   }
+
+
 }

@@ -21,24 +21,37 @@ public class FlightController {
     }
     @GetMapping("/{id}")
     public Optional <Flight> findFlightById(@PathVariable Long id) {
+
         return flightService.searchFlightId(id);
     }
     @PostMapping("/add")
     public void createFlight(@RequestBody Flight flight) {
+
         flightService.createFlight(flight);
     }
     @PutMapping("/update")
     public Optional<Flight> updateFlight(@RequestBody Flight flight) {
-       return flightService.updateFlight(flight);
+
+        return flightService.updateFlight(flight);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteFlight(@PathVariable Long id) {
+
         flightService.deleteFlight(id);
     }
     @GetMapping ("/sale")
     public List<Flight> saleFlights(@RequestParam double offerPrice){
+
         return flightService.saleFlights(offerPrice);
+    }
+    @GetMapping("/locations")
+    public List<Flight> getFlightsByLocations(@RequestParam String origin, @RequestParam String destiny) {
+        return flightService.getByOriginAndDestiny(origin, destiny);
+    }
+    @GetMapping("/origin")
+    public List<Flight> getFlightsByLocations(@RequestParam String origin) {
+        return flightService.getByOrigin(origin);
     }
 
 

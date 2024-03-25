@@ -13,46 +13,52 @@ import java.util.Optional;
 @Service
 public class FlightService {
     @Autowired
-    FlightRepository vuelosRepository;
+    FlightRepository flightRepository;
+
+    //como puse component en flightUtils,aca con Autowired lo inyecto
 
     public List<Flight> getAllFlights() {
-
-        return vuelosRepository.findAll();
+        return flightRepository.findAll();
     }
 
     public Optional<Flight> searchFlightId(Long id) {
-
-        return vuelosRepository.findById(id);
+        return flightRepository.findById(id);
     }
 
     public void createFlight(Flight flight) {
-        vuelosRepository.save(flight);
+        flightRepository.save(flight);
     }
 
     public Optional<Flight> updateFlight(Flight flight) {
-        vuelosRepository.save(flight);
-        return vuelosRepository.findById(flight.getId());
+        flightRepository.save(flight);
+        return flightRepository.findById(flight.getId());
     }
 
     public void deleteFlight(Long id) {
-
-        vuelosRepository.deleteById(id);
+        flightRepository.deleteById(id);
     }
-    public List<Flight> saleFlights (double offerPrice){
-        //traigo todos los vuelos
-       List <Flight> flights = vuelosRepository.findAll();
-        //Armo lista donde voy a guardar los vuelos en oferta
-       List<Flight> saleFlights = new ArrayList<>();
 
-       //Hago un forEach si el precio es menor o igual al
-        //precioMax lo agrega a la lista
-        for(Flight flight : flights) {
-            if(flight.getPrice() <= offerPrice) {
-                saleFlights.add(flight);
+    public List<Flight> saleFlights(double offerPrice) {
+        //traigo todos los vuelos
+        List<Flight> flights = flightRepository.findAll();
+        List<Flight> offerFlights = new ArrayList<>();
+
+
+        for(Flight flight : flights){
+            if(flight.getPrice() < offerPrice){
+                offerFlights.add(flight);
             }
         }
-        //retorno la lista
-        return saleFlights;
+
+        return offerFlights;
+    }
+    public  List<Flight> getByOriginAndDestiny(String origin, String destiny){
+        return flightRepository.findByOriginAndDestiny(origin, destiny);
+    }
+    public  List<Flight> getByOrigin(String origin){
+        return flightRepository.findByOrigin(origin);
     }
 
-}
+    }
+
+//Assertions.assertEquals(2, offers.size());

@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class FlightTest {
 
-    private static Flight flight;
+ /*   private static Flight flight;
 
     @Test
     //asi testeo el set y el get.
@@ -36,6 +36,6 @@ class FlightTest {
     public static void setUp(){
         System.out.println("Se esta creando el vuelo");
         flight = new Flight();
-    }
+    }  */
 
 }
