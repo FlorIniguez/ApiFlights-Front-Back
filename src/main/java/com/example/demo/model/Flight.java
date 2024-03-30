@@ -36,5 +36,4 @@ public class Flight {
       this.frequency = frequency;
    }
 
-
 }

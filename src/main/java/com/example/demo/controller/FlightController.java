@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.DolarCard;
 import com.example.demo.model.Flight;
+import com.example.demo.model.FlightDto;
 import com.example.demo.services.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +53,17 @@ public class FlightController {
     }
     @GetMapping("/origin")
     public List<Flight> getFlightsByLocations(@RequestParam String origin) {
+
         return flightService.getByOrigin(origin);
+    }
+
+    @GetMapping("/dolarprice")
+    public double getDolar(){
+        return flightService.getDolar();
+    }
+    @GetMapping("/dto-flights")
+    public List<FlightDto> flightsDolar(){
+        return flightService.findAllDto();
     }
 
 
