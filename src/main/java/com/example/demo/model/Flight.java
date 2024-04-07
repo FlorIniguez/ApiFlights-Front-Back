@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+//Los 2 constructores uno con argumentos y uno vacio
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

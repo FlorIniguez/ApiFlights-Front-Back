@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class FlightDto {
+    //con Flight y Dolar armo este DTO y construyo el vuelo que quiero mostrar
     private Long id;
     private String origin;
     private String destiny;

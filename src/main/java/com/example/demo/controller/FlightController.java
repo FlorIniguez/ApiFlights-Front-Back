@@ -21,30 +21,17 @@ public class FlightController {
     public List<Flight> getAllFlights() {
         return flightService.getAllFlights();
     }
+    @GetMapping("/dolar-flights")
+    public List<FlightDto> flightsDolar(){
+        return flightService.findAllDto();
+    }
     @GetMapping("/{id}")
     public Optional <Flight> findFlightById(@PathVariable Long id) {
 
         return flightService.searchFlightId(id);
     }
-    @PostMapping("/add")
-    public void createFlight(@RequestBody Flight flight) {
-
-        flightService.createFlight(flight);
-    }
-    @PutMapping("/update")
-    public Optional<Flight> updateFlight(@RequestBody Flight flight) {
-
-        return flightService.updateFlight(flight);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public void deleteFlight(@PathVariable Long id) {
-
-        flightService.deleteFlight(id);
-    }
     @GetMapping ("/sale")
-    public List<Flight> saleFlights(@RequestParam double offerPrice){
-
+    public List<Flight> saleFlights(@RequestParam Integer offerPrice){
         return flightService.saleFlights(offerPrice);
     }
     @GetMapping("/locations")
@@ -53,7 +40,6 @@ public class FlightController {
     }
     @GetMapping("/origin")
     public List<Flight> getFlightsByLocations(@RequestParam String origin) {
-
         return flightService.getByOrigin(origin);
     }
 
@@ -61,10 +47,19 @@ public class FlightController {
     public double getDolar(){
         return flightService.getDolar();
     }
-    @GetMapping("/dto-flights")
-    public List<FlightDto> flightsDolar(){
-        return flightService.findAllDto();
+
+    @PostMapping("/add")
+    public void createFlight(@RequestBody Flight flight) {
+        flightService.createFlight(flight);
+    }
+    @PutMapping("/update")
+    public Optional<Flight> updateFlight(@RequestBody Flight flight) {
+        return flightService.updateFlight(flight);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteFlight(@PathVariable Long id) {
+        flightService.deleteFlight(id);
+    }
 
 }

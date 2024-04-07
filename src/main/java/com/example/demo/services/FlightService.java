@@ -30,14 +30,44 @@ public class FlightService {
         return flightRepository.findAll();
     }
 
+    public List<FlightDto> findAllDto() {
+        List<Flight> flightList = flightRepository.findAll();
+        //pide a config el precio del dolar
+        double dolarPrice = getDolar();
+        //en utils digo que el mapper recibe una lista y el precio dolar
+        //traigo todos los vuelos del repository y el valor del dolar
+        return flightUtils.flightMapperDto(flightList, dolarPrice);
+    }
+
     public Optional<Flight> searchFlightId(Long id) {
+
         return flightRepository.findById(id);
+    }
+
+    public List<Flight> saleFlights(Integer offerPrice) {
+        //traigo todos los vuelos
+        List<Flight> flights = flightRepository.findAll();
+        //le paso por la lista de flights del findAll
+        //y el double del offerPrice que entra por parametro
+        return flightUtils.detectOffers(flights,offerPrice);
+    }
+    public  List<Flight> getByOriginAndDestiny(String origin, String destiny){
+        return flightRepository.findByOriginAndDestiny(origin, destiny);
+    }
+    public  List<Flight> getByOrigin(String origin){
+        return flightRepository.findByOrigin(origin);
+    }
+
+    public double getDolar() {
+        //traigo el dolar y hace el promedio
+        // return flightConfiguration.fetchDolar().getPromedio();
+        DolarCard dolar = flightConfiguration.fetchDolar();
+        return dolar.getPromedio();
     }
 
     public void createFlight(Flight flight) {
         flightRepository.save(flight);
     }
-
     public Optional<Flight> updateFlight(Flight flight) {
         flightRepository.save(flight);
         return flightRepository.findById(flight.getId());
@@ -46,32 +76,5 @@ public class FlightService {
     public void deleteFlight(Long id) {
         flightRepository.deleteById(id);
     }
-
-    public List<Flight> saleFlights(double offerPrice) {
-        //traigo todos los vuelos
-        List<Flight> flights = flightRepository.findAll();
-      return flightUtils.detectOffers(flights,offerPrice);
-    }
-    public  List<Flight> getByOriginAndDestiny(String origin, String destiny){
-        return flightRepository.findByOriginAndDestiny(origin, destiny);
-    }
-    public  List<Flight> getByOrigin(String origin){
-
-        return flightRepository.findByOrigin(origin);
-    }
-
-    public double getDolar() {
-        //traigo el dolar y hace el promedio
-       // return flightConfiguration.fetchDolar().getPromedio();
-        DolarCard dolar = flightConfiguration.fetchDolar();
-        return dolar.getPromedio();
-    }
-    public List<FlightDto> findAllDto(){
-       List<Flight> flightList = flightRepository.findAll();
-        return flightList.stream()
-                .map(flight -> flightUtils.flightMapper(flight, getDolar()))
-                .collect(Collectors.toList());
-    }
 }
 
-//Assertions.assertEquals(2, offers.size());
