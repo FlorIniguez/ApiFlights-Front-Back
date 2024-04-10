@@ -1,5 +1,7 @@
 package com.example.demo.utils;
 
+import com.example.demo.config.FlightConfiguration;
+import com.example.demo.model.DolarCard;
 import com.example.demo.model.Flight;
 import com.example.demo.model.FlightDto;
 import com.example.demo.repository.FlightRepository;
@@ -14,19 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class FlightUtilsTest {
   //  private Flight flight;
     @Autowired
     FlightUtils flightUtils;
-
-  /*  @BeforeEach
-    public void setUp() {
-        List<Flight> flightList;
-        List<FlightDto> flightDtoList;
-        double dolarPrice = 1015;
-    } */
 
     @Test
     void flightMapperTest() {
@@ -47,13 +44,13 @@ public class FlightUtilsTest {
         //agrego el vuelo a la lista
         flightList.add(flight1);
 
-        //la lista dto llama a flightUtils el mapper
+        //la lista dto llama a flightUtils el mapper, le paso el contexto de prueba
         flightDtoList = flightUtils.flightMapperDto(flightList, dolarPrice);
 
         FlightDto flightDto = flightDtoList.get(0);
         //espero que el id sea 1 y traigo el id del flight
         assertEquals(1, flightDto.getId());
-        assertEquals(101500 ,flightDto.getConvertedPrice());
+        assertEquals(flight1.getPrice() * dolarPrice ,flightDto.getConvertedPrice());
 
     }
 
@@ -73,6 +70,27 @@ public class FlightUtilsTest {
 
         // Verificar si el tamaño de la lista de ofertas es el esperado
         assertEquals(2, offers.size());
+
+    }
+    @Test
+    void fetchDolarTest(){
+        //genero contexto
+        DolarCard dummyDolar = new DolarCard();
+        dummyDolar.setMoneda("USD");
+        dummyDolar.setCasa("tarjeta");
+        dummyDolar.setNombre("Tarjeta");
+        dummyDolar.setCompra(1200.0);
+        dummyDolar.setVenta(1000.0);
+
+
+        //crea un mock de flightConfiguration, cuando llamo la funcion devolve dummyDolar
+        //mock. clase que quiero, me crea simulación
+        FlightUtils mockedFlightUtils =  mock(FlightUtils.class);
+        when(mockedFlightUtils.fetchDolar()).thenReturn(dummyDolar);
+
+        DolarCard dolarPrueba = mockedFlightUtils.fetchDolar();
+        //verificaciones
+        assertEquals(1100,dolarPrueba.getPromedio());
 
     }
 

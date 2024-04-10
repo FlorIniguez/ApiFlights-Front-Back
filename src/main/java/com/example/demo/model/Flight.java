@@ -1,9 +1,6 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,6 +23,12 @@ public class Flight {
    private String arrivingTime;
    private double price;
    private String frequency;
+
+   //muchos a uno, primero lo externo
+   @ManyToOne
+   //con que atributo se van a relacionar
+   @JoinColumn(name = "company_id")
+   private Company company;
 
 
    public Flight(String origin, String destiny, String departureTime, String arrivingTime, double price, String frequency) {

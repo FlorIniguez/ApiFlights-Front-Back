@@ -20,8 +20,6 @@ public class FlightService {
     @Autowired
     FlightRepository flightRepository;
     @Autowired
-    FlightConfiguration flightConfiguration;
-    @Autowired
     FlightUtils flightUtils;
 
     //como puse component en flightUtils,aca con Autowired lo inyecto
@@ -61,11 +59,12 @@ public class FlightService {
     public double getDolar() {
         //traigo el dolar y hace el promedio
         // return flightConfiguration.fetchDolar().getPromedio();
-        DolarCard dolar = flightConfiguration.fetchDolar();
+        DolarCard dolar = flightUtils.fetchDolar();
         return dolar.getPromedio();
     }
 
-    public void createFlight(Flight flight) {
+    public void createFlight(Flight flight, String company) {
+
         flightRepository.save(flight);
     }
     public Optional<Flight> updateFlight(Flight flight) {

@@ -17,6 +17,7 @@ public class FlightController {
     @Autowired
     FlightService flightService;
 
+    @CrossOrigin
     @GetMapping("")
     public List<Flight> getAllFlights() {
         return flightService.getAllFlights();
@@ -45,12 +46,13 @@ public class FlightController {
 
     @GetMapping("/dolarprice")
     public double getDolar(){
+
         return flightService.getDolar();
     }
 
     @PostMapping("/add")
-    public void createFlight(@RequestBody Flight flight) {
-        flightService.createFlight(flight);
+    public void createFlight(@RequestBody Flight flight, @RequestParam String company) {
+        flightService.createFlight(flight,company);
     }
     @PutMapping("/update")
     public Optional<Flight> updateFlight(@RequestBody Flight flight) {
