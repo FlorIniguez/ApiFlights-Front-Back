@@ -15,7 +15,6 @@ public class CompanyService {
     @Autowired
     CompanyRepository companyRepository;
 
-
     public void createCompany(Company company) {
         companyRepository.save(company);
     }

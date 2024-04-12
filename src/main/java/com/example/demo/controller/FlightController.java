@@ -51,8 +51,12 @@ public class FlightController {
     }
 
     @PostMapping("/add")
-    public void createFlight(@RequestBody Flight flight, @RequestParam String company) {
-        flightService.createFlight(flight,company);
+    public void createFlight(@RequestBody Flight flight) {
+        flightService.createFlight(flight);
+    }
+    @PostMapping("/addCompany")
+    public void createFlightCompany(@RequestBody Flight flight, @RequestParam Long companyId) {
+        flightService.createFlightWithCompany(flight, companyId );
     }
     @PutMapping("/update")
     public Optional<Flight> updateFlight(@RequestBody Flight flight) {

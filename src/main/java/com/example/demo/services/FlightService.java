@@ -1,9 +1,11 @@
 package com.example.demo.services;
 
 import com.example.demo.config.FlightConfiguration;
+import com.example.demo.model.Company;
 import com.example.demo.model.DolarCard;
 import com.example.demo.model.Flight;
 import com.example.demo.model.FlightDto;
+import com.example.demo.repository.CompanyRepository;
 import com.example.demo.utils.FlightUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,8 @@ import java.util.stream.Collectors;
 public class FlightService {
     @Autowired
     FlightRepository flightRepository;
+    @Autowired
+    CompanyRepository companyRepository;
     @Autowired
     FlightUtils flightUtils;
 
@@ -63,9 +67,21 @@ public class FlightService {
         return dolar.getPromedio();
     }
 
-    public void createFlight(Flight flight, String company) {
+    public void createFlight(Flight flight) {
 
         flightRepository.save(flight);
+    }
+    public void createFlightWithCompany(Flight flight, Long companyId) {
+        // Buscar la compañía por su ID
+        Optional<Company> optionalCompany = companyRepository.findById(companyId);
+
+        if (optionalCompany.isPresent()) {
+            Company company = optionalCompany.get();
+            // Asociar el vuelo con la compañía
+            flight.setCompany(company);
+            // Guardar el vuelo en la base de datos
+            flightRepository.save(flight);
+        }
     }
     public Optional<Flight> updateFlight(Flight flight) {
         flightRepository.save(flight);
