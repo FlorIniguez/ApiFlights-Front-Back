@@ -46,18 +46,14 @@ public class FlightController {
 
     @GetMapping("/dolarprice")
     public double getDolar(){
-
         return flightService.getDolar();
     }
 
     @PostMapping("/add")
-    public void createFlight(@RequestBody Flight flight) {
-        flightService.createFlight(flight);
+    public void createFlight(@RequestBody Flight flight, @RequestParam Long companyId) {
+        flightService.createFlight(flight, companyId );
     }
-    @PostMapping("/addCompany")
-    public void createFlightCompany(@RequestBody Flight flight, @RequestParam Long companyId) {
-        flightService.createFlightWithCompany(flight, companyId );
-    }
+
     @PutMapping("/update")
     public Optional<Flight> updateFlight(@RequestBody Flight flight) {
         return flightService.updateFlight(flight);

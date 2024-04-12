@@ -67,22 +67,22 @@ public class FlightService {
         return dolar.getPromedio();
     }
 
-    public void createFlight(Flight flight) {
+    public void createFlight(Flight flight, Long companyId) {
 
-        flightRepository.save(flight);
-    }
-    public void createFlightWithCompany(Flight flight, Long companyId) {
         // Buscar la compañía por su ID
-        Optional<Company> optionalCompany = companyRepository.findById(companyId);
+        Optional<Company> searchCompany = companyRepository.findById(companyId);
 
-        if (optionalCompany.isPresent()) {
-            Company company = optionalCompany.get();
-            // Asociar el vuelo con la compañía
+        //si encuentra la compania con ese id,  "trae la compania"
+        if (searchCompany.isPresent()) {
+            Company company = searchCompany.get();
+
+            // Setea la compania al vuelo
             flight.setCompany(company);
+
             // Guardar el vuelo en la base de datos
             flightRepository.save(flight);
-        }
     }
+}
     public Optional<Flight> updateFlight(Flight flight) {
         flightRepository.save(flight);
         return flightRepository.findById(flight.getId());
