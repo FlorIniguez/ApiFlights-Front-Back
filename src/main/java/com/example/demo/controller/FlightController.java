@@ -28,7 +28,6 @@ public class FlightController {
     }
     @GetMapping("/{id}")
     public Optional <Flight> findFlightById(@PathVariable Long id) {
-
         return flightService.searchFlightId(id);
     }
     @GetMapping ("/sale")
@@ -49,12 +48,10 @@ public class FlightController {
         return flightService.getDolar();
     }
 
-    @PostMapping("/add")
-    public void createFlight(@RequestBody Flight flight, @RequestParam Long companyId) {
-        flightService.createFlight(flight, companyId );
+    @PostMapping("/add/{companyId}")
+    public Optional<Flight> createFlight(@PathVariable Long companyId,@RequestBody Flight flight) {
+        return flightService.createFlight(companyId,flight );
     }
-
-    @PutMapping("/update")
     public Optional<Flight> updateFlight(@RequestBody Flight flight) {
         return flightService.updateFlight(flight);
     }

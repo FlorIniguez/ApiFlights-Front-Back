@@ -83,7 +83,7 @@ public class FlightUtilsTest {
         dummyDolar.setVenta(1000.0);
 
 
-        //crea un mock de flightConfiguration, cuando llamo la funcion devolve dummyDolar
+        //crea un mock de flightUtils, cuando llamo la funcion devolve dummyDolar
         //mock. clase que quiero, me crea simulación
         FlightUtils mockedFlightUtils =  mock(FlightUtils.class);
         when(mockedFlightUtils.fetchDolar()).thenReturn(dummyDolar);

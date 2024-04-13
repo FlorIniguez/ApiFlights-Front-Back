@@ -51,12 +51,14 @@ public class FlightService {
         List<Flight> flights = flightRepository.findAll();
         //le paso por la lista de flights del findAll
         //y el double del offerPrice que entra por parametro
-        return flightUtils.detectOffers(flights,offerPrice);
+        return flightUtils.detectOffers(flights, offerPrice);
     }
-    public  List<Flight> getByOriginAndDestiny(String origin, String destiny){
+
+    public List<Flight> getByOriginAndDestiny(String origin, String destiny) {
         return flightRepository.findByOriginAndDestiny(origin, destiny);
     }
-    public  List<Flight> getByOrigin(String origin){
+
+    public List<Flight> getByOrigin(String origin) {
         return flightRepository.findByOrigin(origin);
     }
 
@@ -67,22 +69,14 @@ public class FlightService {
         return dolar.getPromedio();
     }
 
-    public void createFlight(Flight flight, Long companyId) {
+    public Optional<Flight> createFlight( Long companyId,Flight flight) {
+        Company company = companyRepository.findById(companyId)
+                .orElse(null);
 
-        // Buscar la compañía por su ID
-        Optional<Company> searchCompany = companyRepository.findById(companyId);
-
-        //si encuentra la compania con ese id,  "trae la compania"
-        if (searchCompany.isPresent()) {
-            Company company = searchCompany.get();
-
-            // Setea la compania al vuelo
-            flight.setCompany(company);
-
-            // Guardar el vuelo en la base de datos
-            flightRepository.save(flight);
+        flight.setCompany(company);
+        return Optional.of(flightRepository.save(flight));
     }
-}
+
     public Optional<Flight> updateFlight(Flight flight) {
         flightRepository.save(flight);
         return flightRepository.findById(flight.getId());
