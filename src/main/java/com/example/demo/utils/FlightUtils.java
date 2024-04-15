@@ -16,7 +16,7 @@ public class FlightUtils {
     //recibe un vuelo, el precio dolar y devuelve el vuelo con el precio convertido el FlightDTO
     public FlightDto flightMapper(Flight flight, double price ){
         return new FlightDto(flight.getId(), flight.getOrigin(), flight.getDestiny(),flight.getDepartureTime(),
-                flight.getArrivingTime(),flight.getPrice() * price, flight.getFrequency());
+                flight.getArrivingTime(),flight.getPrice() * price, flight.getFrequency(), flight.getCompany());
     }
 
     public List<FlightDto> flightMapperDto(List <Flight> flights, double price){
@@ -35,7 +35,7 @@ public class FlightUtils {
         return flights.stream()
                 .map(flight -> new FlightDto(flight.getId(), flight.getOrigin(), flight.getDestiny(),
                         flight.getDepartureTime(), flight.getArrivingTime(),
-                        flight.getPrice() * price, flight.getFrequency()))
+                        flight.getPrice() * price, flight.getFrequency(), flight.getCompany()))
                 .collect(Collectors.toList());
     }
 

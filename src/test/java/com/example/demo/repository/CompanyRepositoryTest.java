@@ -39,6 +39,13 @@ class CompanyRepositoryTest {
         assertThat(companyList).isNotNull();
         assertThat(companyList.size()).isEqualTo(2);
     }
+    @Test
+    void companyFindById(){
+        companyRepository.save(company);
+        //del repository traeme
+        Company companyTest = companyRepository.findById(company.getId()).get();
+        assertThat(companyTest).isNotNull();
+    }
 
 
 }
