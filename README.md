@@ -2,9 +2,11 @@ Una vez clonado el proyecto
 
 //En terminal
 
-Para iniciar npm i
--FRONT cd client
--npm run start
+- iniciar npm i
+  
+- FRONT cd client
+
+- npm run start
 
 
 
