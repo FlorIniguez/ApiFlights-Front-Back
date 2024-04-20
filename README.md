@@ -2,7 +2,9 @@ Una vez clonado el proyecto
 
 //En terminal bash
 
-- FRONT cd client
+Para iniciar el Front
+
+- cd client
   
 - iniciar npm i
   
