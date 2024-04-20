@@ -13,7 +13,7 @@ Para iniciar el Front
 
 
 
-Captura de los vuelos, que son obtenidos de la base de datos a través de peticiones al servidor (Backend). Estos vuelos son creados y gestionados en el Backend
+Captura de los vuelos, que son obtenidos de la base de datos a través de peticiones al servidor (Backend). Estos vuelos son creados y gestionados en el Backend. 
 
 ![image](https://github.com/FlorIniguez/ApiFlights-Front-Back/assets/122651005/ca9aca2c-c76a-4e50-b870-10b673acfadc)
 
