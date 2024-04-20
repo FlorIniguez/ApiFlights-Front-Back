@@ -1,7 +1,4 @@
 package com.example.demo.services;
-
-import com.example.demo.config.FlightConfiguration;
-import com.example.demo.exceptions.ResourcedNotFoundException;
 import com.example.demo.model.Company;
 import com.example.demo.model.DolarCard;
 import com.example.demo.model.Flight;
@@ -13,10 +10,10 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repository.FlightRepository;
 
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 public class FlightService {

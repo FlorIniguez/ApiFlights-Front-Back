@@ -6,8 +6,6 @@ import com.example.demo.model.FlightDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

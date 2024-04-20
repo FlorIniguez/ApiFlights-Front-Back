@@ -1,6 +1,4 @@
 package com.example.demo.controller;
-
-import com.example.demo.model.DolarCard;
 import com.example.demo.model.Flight;
 import com.example.demo.model.FlightDto;
 import com.example.demo.services.FlightService;
