@@ -6,7 +6,7 @@ Para iniciar el Front
 
 - cd client
   
-- iniciar npm i
+- npm i
   
 
 - npm run start
