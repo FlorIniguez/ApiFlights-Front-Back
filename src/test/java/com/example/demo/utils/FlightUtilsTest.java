@@ -27,6 +27,8 @@ public class FlightUtilsTest {
 
     @Test
     void flightMapperTest() {
+        //verificar si el mapeo de un Flight a un  FlightDto se realiza ok
+        //variables necesarias para la prueba
         List<Flight> flightList = new ArrayList<>();
         double dolarPrice = 1015;
         List<FlightDto> flightDtoList;
@@ -83,13 +85,14 @@ public class FlightUtilsTest {
         dummyDolar.setVenta(1000.0);
 
 
-        //crea un mock de flightUtils, cuando llamo la funcion devolve dummyDolar
-        //mock. clase que quiero, me crea simulación
+        //crea un mock de flightUtils, (mock. clase que quiero, me crea simulación)
         FlightUtils mockedFlightUtils =  mock(FlightUtils.class);
+        //Se configura el comportamiento del mock utilizando el método when().thenReturn(). Esto establece que cuando se llame
+        // al método fetchDolar() en el mock,devolverá el objeto dummyDolar creado anteriormente.
         when(mockedFlightUtils.fetchDolar()).thenReturn(dummyDolar);
-
+        //Ejecuto el metodo bajo prueba, se llama a fetchDolar en el obj mockedFlightUtils
         DolarCard dolarPrueba = mockedFlightUtils.fetchDolar();
-        //verificaciones
+        //verificaciones, se veruduca el valor promedio con JUnit
         assertEquals(1100,dolarPrueba.getPromedio());
 
     }

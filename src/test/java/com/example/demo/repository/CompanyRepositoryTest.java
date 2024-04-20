@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class CompanyRepositoryTest {
@@ -46,6 +47,35 @@ class CompanyRepositoryTest {
         Company companyTest = companyRepository.findById(company.getId()).get();
         assertThat(companyTest).isNotNull();
     }
+    @Test
+    void companyUpdateTest(){
+        //primero guardo el vuelo
+        companyRepository.save(company);
+
+        //busco por id la compania recién guardada en el repositorio
+        Company company1 = companyRepository.findById(company.getId()).get();
+
+        //Seteo los nuevos valores, que actualizaria
+        company1.setBanner("Banner prueba1");
+        company1.setName("Compania prueba");
+        //vuelvo a guardarlo, actualizado
+        Company companyUpdated = companyRepository.save(company1);
+
+        assertThat(companyUpdated.getName()).isEqualTo("Compania prueba");
+        assertThat(companyUpdated.getBanner()).isEqualTo("Banner prueba1");
+    }
+
+    @Test
+    void companyDeleted(){
+        //guardo compania y la borro por id
+        companyRepository.save(company);
+        companyRepository.deleteById(company.getId());
+
+        //busco si hay una compania con ese id y corroboro que este vacio
+        Optional<Company> deletedCompany = companyRepository.findById(company.getId());
+        // Verificar que la compañía haya sido eliminada correctamente
+       assertTrue(deletedCompany.isEmpty());
+          }
 
 
 }

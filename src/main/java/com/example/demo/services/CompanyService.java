@@ -1,11 +1,10 @@
 package com.example.demo.services;
 
+import com.example.demo.exceptions.ResourcedNotFoundException;
 import com.example.demo.model.Company;
 import com.example.demo.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +31,8 @@ public class CompanyService {
         return companyRepository.findById((company.getId()));
     }
 
-    public void deleteById(Long id) {
-        companyRepository.deleteById(id);
+    public void deleteById(Long id) throws ResourcedNotFoundException {
+        Company company = companyRepository.findById(id).orElseThrow(()-> new ResourcedNotFoundException("Company","Id", id));
+        companyRepository.deleteById(company.getId());
     }
 }

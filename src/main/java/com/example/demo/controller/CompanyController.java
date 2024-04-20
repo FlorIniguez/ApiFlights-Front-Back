@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.exceptions.ResourcedNotFoundException;
 import com.example.demo.model.Company;
 import com.example.demo.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/companies")
 public class CompanyController {
     @Autowired
     CompanyService companyService;
@@ -31,8 +32,14 @@ public class CompanyController {
         return companyService.updateCompany(company);
     }
     @DeleteMapping("/delete/{id}")
-    public void deleteCompany(@PathVariable Long id){
-        companyService.deleteById(id);
+    public String deleteCompany(@PathVariable Long id){
+        try{
+            companyService.deleteById(id);
+            return "Company successfully deleted";
+        } catch (ResourcedNotFoundException e) {
+            System.out.println(e.getMessage());
+            return "Company not found";
+        }
     }
 
 }

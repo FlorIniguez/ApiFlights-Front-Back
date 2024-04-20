@@ -31,7 +31,6 @@ public class FlightUtils {
     }
     @Bean
     public RestTemplate restTemplate() {
-
         return new RestTemplate();
     }
 

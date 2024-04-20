@@ -82,4 +82,17 @@ public class FlightRepositoryTest {
         assertThat(flightUpdated.getOrigin()).isEqualTo("BRA");
         assertThat(flightUpdated.getDestiny()).isEqualTo("ARG");
     }
+    @Test
+    void getFlightsByOriginTest(){
+        flightRepository.save(flight);
+
+        List<Flight> flightList = flightRepository.findByOrigin(flight.getOrigin());
+
+        assertThat(flight.getOrigin()).isEqualTo("COR");
+        assertThat(flightList).isNotNull();
+
+
+
+
+    }
 }
