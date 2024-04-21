@@ -13,7 +13,7 @@ Para iniciar el Front
 
 
 
-Captura de los vuelos, que son obtenidos de la base de datos a través de peticiones al servidor (Backend). Estos vuelos son creados y gestionados en el Backend. Los vuelos son cargados con valor dolar y atraves de una api externa se convierte su valor en pesos.
+Captura de los vuelos, que son obtenidos de la base de datos a través de peticiones al servidor (Backend). Estos vuelos son creados y gestionados en el Backend. Los vuelos son cargados con valor dolar y atraves de una api externa se convierte el precio de los vuelos de dólares a pesos, utilizando el valor actual del dólar para realizar esta conversión.
 
 ![image](https://github.com/FlorIniguez/ApiFlights-Front-Back/assets/122651005/ca9aca2c-c76a-4e50-b870-10b673acfadc)
 
