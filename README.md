@@ -9,7 +9,7 @@ Para iniciar el Front
 - npm i
   
 
-- npm run start
+- npm start
 
 
 
