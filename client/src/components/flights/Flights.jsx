@@ -40,7 +40,7 @@ const Flights = () => {
               style={{ width: "2rem" }}
               className="rounded-circle mx-auto"
             />
-
+                                                
             <h5>{flight.company.name}</h5>
             <p>
               Departure: {flight.departureTime} Arriving:{flight.arrivingTime}{" "}
