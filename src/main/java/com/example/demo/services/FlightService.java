@@ -26,10 +26,6 @@ public class FlightService {
 
     //como puse component en flightUtils,aca con Autowired lo inyecto
 
-    public List<Flight> getAllFlights() {
-        return flightRepository.findAll();
-    }
-
     public List<FlightDto> findAllDto() {
         List<Flight> flightList = flightRepository.findAll();
         //pide a config el precio del dolar

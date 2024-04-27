@@ -16,13 +16,9 @@ public class FlightController {
     FlightService flightService;
 
     @CrossOrigin
-    @GetMapping("")
-    public List<Flight> getAllFlights() {
-        return flightService.getAllFlights();
-    }
 
-    @GetMapping("/dolar-flights")
-    public List<FlightDto> flightsDolar() {
+    @GetMapping("")
+    public List<FlightDto> getAllFlights() {
         return flightService.findAllDto();
     }
 

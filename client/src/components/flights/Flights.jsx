@@ -7,7 +7,7 @@ const Flights = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/flights/dolar-flights")
+      .get("http://localhost:8080/flights")
       .then((response) => {
         setFlights(response.data);
       })
