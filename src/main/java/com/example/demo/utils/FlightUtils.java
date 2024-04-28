@@ -40,10 +40,4 @@ public class FlightUtils {
         return restTemplate.getForObject(apiUrl, DolarCard.class);
 
     }
-    public DolarCard[] fetchAllDolars(){
-        RestTemplate restTemplate = restTemplate();
-        String apiUrl = "https://dolarapi.com/v1/dolares";
-        return restTemplate.getForEntity(apiUrl, DolarCard[].class).getBody();
-
-    }
 }

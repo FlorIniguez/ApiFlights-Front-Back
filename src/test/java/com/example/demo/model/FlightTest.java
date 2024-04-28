@@ -1,11 +1,11 @@
 package com.example.demo.model;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.springframework.context.annotation.Bean;
+// import org.junit.jupiter.api.Assertions;
+// import org.junit.jupiter.api.BeforeAll;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.context.annotation.Bean;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+// import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class FlightTest {
 

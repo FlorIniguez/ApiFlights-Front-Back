@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card } from "react-bootstrap";
+import { Card, Col,Row } from "react-bootstrap";
 
 const Flights = () => {
   const [flights, setFlights] = useState([]);
@@ -19,11 +19,12 @@ const Flights = () => {
     <div className="container my-5">
       <h3 className="text-center"> All Flights </h3>
 
-      <div className="w-70 d-flex justify-content-evenly flex-wrap m-3">
+      <Row xs={1} md={2} lg={3} className="g-4 justify-content-center">
         {flights.map((flight, index) => (
+          <Col key={index}>
           <Card
             key={index}
-            className="text-center m-3 p-1"
+            className="text-center m-3 p-1 mx-auto"
             style={{ width: "17rem" }}
           >
             <Card.Title>
@@ -47,8 +48,9 @@ const Flights = () => {
             </p>
             <p>Frequency: {flight.frequency}</p>
           </Card>
+          </Col>
         ))}
-      </div>
+      </Row>
     </div>
   );
 };

@@ -7,11 +7,14 @@ import { Link } from "react-router-dom";
 const NavbarApi = () => {
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" data-bs-theme="dark" expand="lg">
         <Container>
-          <Link className="nav-link" to="/">
+        <Link className="nav-link" to="/">
             <Navbar.Brand>ApiFlights</Navbar.Brand>
           </Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          
 
           <Nav className="me-auto">
             <Link className="nav-link" to="/">
@@ -24,6 +27,7 @@ const NavbarApi = () => {
               Flights
             </Link>{" "}
           </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
