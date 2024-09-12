@@ -10,7 +10,7 @@ Este proyecto permite gestionar vuelos y compañías asociadas. Los precios de l
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **Backend**: Spring Boot (u otro framework backend de tu elección).
+- **Backend**: Spring Boot
 - **Frontend**: React
 - **Base de Datos**: MySQL
 - **API Externa**: Para obtener el valor actual del dólar.
@@ -18,7 +18,7 @@ Este proyecto permite gestionar vuelos y compañías asociadas. Los precios de l
  ## 📜 Requisitos
 
 - Node.js y npm (para el frontend)
-- Java (para el backend, si usas Spring Boot)
+- Java 
 - MySQL
 
 ## 🏗️ Construcción y Ejecución
