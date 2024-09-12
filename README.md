@@ -25,7 +25,7 @@ Este proyecto permite gestionar vuelos y compañías asociadas. Los precios de l
 
 ### 1. Clonar el Repositorio
 
-```bash
+bash
 git clone https://github.com/FlorIniguez/ApiFlights-Front-Back
 2. Iniciar el Backend
 Asegúrate de tener configurado el backend y la base de datos MySQL. Ejecuta FlightsApiApplication.
