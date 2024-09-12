@@ -33,15 +33,17 @@ Asegúrate de tener configurado el backend y la base de datos MySQL. Ejecuta Fli
 3. Iniciar el Frontend
 Abre una terminal en la raíz del proyecto y sigue estos pasos:
 
-bash
-cd client
-npm install
-npm start
-Esto iniciará el frontend en http://localhost:3000, donde podrás consultar y visualizar los vuelos.
+#bash
+#cd client
+#npm install
+#npm start
+#Esto iniciará el frontend en http://localhost:3000, donde podrás consultar y visualizar los vuelos.
+#📸 Capturas de Pantalla
+#Interfaz de Vuelos
 
 ![image](https://github.com/FlorIniguez/ApiFlights-Front-Back/assets/122651005/ca9aca2c-c76a-4e50-b870-10b673acfadc)
 
-Captura de las compañias en el Front
+#Captura de las compañias en el Front
 
 ![image](https://github.com/FlorIniguez/ApiFlights-Front-Back/assets/122651005/3e6a7542-2d00-4dc5-86a2-502253f760da)
 
