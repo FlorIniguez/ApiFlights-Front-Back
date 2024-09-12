@@ -32,16 +32,16 @@ Este proyecto permite gestionar vuelos y compañías asociadas. Los precios de l
 **Asegúrate de tener configurado el backend y la base de datos MySQL. Ejecuta FlightsApiApplication.
 
 ### 3. Iniciar el Frontend
-**Abre una terminal en la raíz del proyecto y sigue estos pasos:
+Abre una terminal en la raíz del proyecto y sigue estos pasos:
 - bash
 - cd client
 -  npm install
 - npm start
 - Esto iniciará el frontend en http://localhost:3000, donde podrás consultar y visualizar los vuelos.
   
-#📸 Capturas de Pantalla
+### 📸 Capturas de Pantalla
 
-** Interfaz de Vuelos
+ Interfaz de Vuelos
 
 ![image](https://github.com/FlorIniguez/ApiFlights-Front-Back/assets/122651005/ca9aca2c-c76a-4e50-b870-10b673acfadc)
 
